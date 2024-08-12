@@ -9,6 +9,19 @@ class MyDay extends Component {
     tasks: getTasks(),
     newTaskTitle: "",
   };
+  handleDelete = (task) => {
+    const tasks = this.state.tasks.filter((t) => t.title !== task.title);
+    this.setState({ tasks: tasks });
+  };
+  handleChange = (task) => {
+    const updatedTasks = this.state.tasks.map((t) => {
+      if (t.title === task.title) {
+        return { ...t, done: !t.done };
+      }
+      return t;
+    });
+    this.setState({ tasks: updatedTasks });
+  };
 
   render() {
     return (
@@ -16,7 +29,11 @@ class MyDay extends Component {
         <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-teal-500 text-5xl font-black p-5">
           My Day
         </h1>
-        <TaskList tasks={this.state.tasks} handleDelete={this.handleDelete} />
+        <TaskList
+          tasks={this.state.tasks}
+          handleDelete={this.handleDelete}
+          handleChange={this.handleChange}
+        />
         <TaskInput
           newTaskTitle={this.state.newTaskTitle}
           handleInputChange={(e) => {

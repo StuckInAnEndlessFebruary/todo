@@ -1,7 +1,7 @@
 // TaskList.jsx
 import React from "react";
 
-const TaskList = ({ tasks, handleDelete }) => {
+const TaskList = ({ tasks, handleDelete, handleChange }) => {
   return (
     <div className="flex justify-center border rounded-lg m-10">
       <ul className="bg-white rounded-lg w-96 text-gray-900 w-full">
@@ -12,15 +12,7 @@ const TaskList = ({ tasks, handleDelete }) => {
           >
             <div>
               <input
-                onChange={() => {
-                  const updatedTasks = this.state.tasks.map((t) => {
-                    if (t.title === task.title) {
-                      return { ...t, done: !t.done };
-                    }
-                    return t;
-                  });
-                  this.setState({ tasks: updatedTasks });
-                }}
+                onChange={() => handleChange(task)}
                 type="checkbox"
                 className="mr-2"
                 checked={task.done}
@@ -28,7 +20,7 @@ const TaskList = ({ tasks, handleDelete }) => {
               {task.title}
             </div>
             <button
-              onClick={() => this.handleDelete(task)}
+              onClick={() => handleDelete(task)}
               className="border border-red-500 bg-red-500 text-white rounded-md px-4 py-1 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline"
             >
               delete
