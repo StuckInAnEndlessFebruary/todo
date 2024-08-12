@@ -25,10 +25,8 @@ class MyDay extends Component {
 
   render() {
     return (
-      <div>
-        <h1 className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-teal-500 text-5xl font-black p-5">
-          My Day
-        </h1>
+      <div className="w-full">
+        <h1 className="bg-clip-text  text-5xl  p-5">My Day</h1>
         <TaskList
           tasks={this.state.tasks}
           handleDelete={this.handleDelete}

@@ -3,7 +3,7 @@ import React from "react";
 
 const TaskInput = ({ newTaskTitle, handleInputChange, handleAddTask }) => {
   return (
-    <div className="flex justify-center border rounded-lg m-10">
+    <div className="flex justify-center border border-teal-500 rounded-lg m-10">
       <ul className="bg-white rounded-lg w-96 text-gray-900 w-full">
         <li className="flex items-center px-6 py-2 rounded-t-lg">
           <input
@@ -15,7 +15,7 @@ const TaskInput = ({ newTaskTitle, handleInputChange, handleAddTask }) => {
           />
           <button
             onClick={handleAddTask}
-            className="border border-gray-200 bg-gray-200 text-gray-700 rounded-md px-4 py-1 m-2 transition duration-500 ease select-none hover:bg-gray-300 focus:outline-none focus:shadow-outline ml-auto"
+            className="transition duration-500 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline border border-gray-200 bg-gray-200 text-gray-700 rounded-md px-4 py-1 m-2 transition duration-500 ease select-none hover:bg-gray-300 focus:outline-none focus:shadow-outline ml-auto"
           >
             add
           </button>

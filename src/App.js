@@ -6,8 +6,9 @@ import "tailwindcss/tailwind.css";
 
 function App() {
   return (
-    <div className="App">
-      <MyDay />
+    <div className="App flex">
+      <Sidebar />
+      <MyDay></MyDay>
     </div>
   );
 }
