@@ -1,5 +1,7 @@
 // TaskList.jsx
 import React from "react";
+import { EditText, EditTextarea } from "react-edit-text";
+import "react-edit-text/dist/index.css";
 
 const TaskList = ({ tasks, handleDelete, handleChange }) => {
   return (
@@ -17,7 +19,12 @@ const TaskList = ({ tasks, handleDelete, handleChange }) => {
                 className="mr-2 w-6 h-6 accent-teal-600 rounded-full border-gray-300 transition-transform transform hover:scale-110"
                 checked={task.done}
               />
-              {task.title}
+              <EditText
+                name="textbox3"
+                defaultValue={task.title}
+                editButtonProps={{ style: { marginLeft: "5px", width: 16 } }}
+                showEditButton
+              />
             </div>
             <button
               onClick={() => handleDelete(task)}

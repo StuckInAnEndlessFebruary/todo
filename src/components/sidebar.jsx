@@ -6,7 +6,7 @@ class Sidebar extends Component {
   render() {
     return (
       <div>
-        <aside class="flex flex-col w-64 h-screen px-5 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
+        <aside class="flex flex-col w-60 h-screen px-5 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
           <a href="#">
             <img
               class="w-auto h-7"

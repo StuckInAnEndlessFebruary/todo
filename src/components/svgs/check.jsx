@@ -2,7 +2,7 @@ import React from "react";
 
 const Checksvg = () => (
   <svg
-    className="w-full"
+    className="w-full p-2"
     xmlns="http://www.w3.org/2000/svg"
     data-name="Layer 1"
     width="574.90338"
