@@ -12,7 +12,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Sidebar />}>
+        <Route path="/" element={<Layout />}>
           <Route path="/home" element={<Home></Home>} />
           <Route path="/myDay" element={<MyDay></MyDay>} />
           <Route path="/important" element={<Important></Important>} />

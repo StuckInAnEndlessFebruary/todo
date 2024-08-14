@@ -1,3 +1,4 @@
+//sidebar.jsx
 import React, { Component } from "react";
 import Checksvg from "./svgs/check";
 import { Link } from "react-router-dom";
