@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "tailwindcss/tailwind.css";
 import Important from "./components/important";
 import Layout from "./components/layout";
+import NotFound from "./components/notFound";
+import Account1 from "./components/account";
 
 export default function App() {
   return (
@@ -16,6 +18,7 @@ export default function App() {
           <Route path="/home" element={<Home></Home>} />
           <Route path="/myDay" element={<MyDay></MyDay>} />
           <Route path="/important" element={<Important></Important>} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

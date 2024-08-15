@@ -22,6 +22,13 @@ class MyDay extends Component {
     });
     this.setState({ tasks: updatedTasks });
   };
+  handlePriorityChange = (task, newPriority) => {
+    // Update the task's priority
+    const updatedTasks = this.state.tasks.map((t) =>
+      t.title === task.title ? { ...t, priority: newPriority } : t
+    );
+    this.setState({ tasks: updatedTasks });
+  };
 
   render() {
     return (
@@ -31,6 +38,7 @@ class MyDay extends Component {
           tasks={this.state.tasks}
           handleDelete={this.handleDelete}
           handleChange={this.handleChange}
+          handlePriorityChange={this.handlePriorityChange}
         />
         <TaskInput
           newTaskTitle={this.state.newTaskTitle}

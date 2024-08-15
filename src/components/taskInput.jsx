@@ -1,7 +1,12 @@
-// TaskInput.jsx
 import React from "react";
 
 const TaskInput = ({ newTaskTitle, handleInputChange, handleAddTask }) => {
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleAddTask();
+    }
+  };
+
   return (
     <div className="flex justify-center border border-teal-500 rounded-lg m-10">
       <ul className="bg-white rounded-lg w-96 text-gray-900 w-full">
@@ -12,6 +17,7 @@ const TaskInput = ({ newTaskTitle, handleInputChange, handleAddTask }) => {
             placeholder="Enter a task..."
             value={newTaskTitle}
             onChange={handleInputChange}
+            onKeyPress={handleKeyPress}
           />
           <button
             onClick={handleAddTask}

@@ -1,12 +1,16 @@
-// TaskList.jsx
 import React from "react";
-import { EditText, EditTextarea } from "react-edit-text";
+import { EditText } from "react-edit-text";
 import "react-edit-text/dist/index.css";
 
-const TaskList = ({ tasks, handleDelete, handleChange }) => {
+const TaskList = ({
+  tasks,
+  handleDelete,
+  handleChange,
+  handlePriorityChange,
+}) => {
   return (
-    <div className=" flex justify-center rounded-lg m-10">
-      <ul className=" bg-white rounded-lg w-96 text-gray-900 w-full">
+    <div className="flex justify-center rounded-lg m-10">
+      <ul className="bg-white rounded-lg w-96 text-gray-900 w-full">
         {tasks.map((task) => (
           <li
             key={task.title}
@@ -26,12 +30,23 @@ const TaskList = ({ tasks, handleDelete, handleChange }) => {
                 showEditButton
               />
             </div>
-            <button
-              onClick={() => handleDelete(task)}
-              className=" bg-teal-600 text-white rounded-md px-4 py-1 m-2 transition duration-500 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline"
-            >
-              delete
-            </button>
+            <div className="flex items-center">
+              <select
+                value={task.priority}
+                onChange={(e) => handlePriorityChange(task, e.target.value)}
+                className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block p-2 mr-2 h-10"
+              >
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+              <button
+                onClick={() => handleDelete(task)}
+                className="bg-teal-600 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline h-10"
+              >
+                delete
+              </button>
+            </div>
           </li>
         ))}
       </ul>
