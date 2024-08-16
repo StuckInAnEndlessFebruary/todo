@@ -1,14 +1,11 @@
-//index.js
 import ReactDOM from "react-dom/client";
 import Home from "./components/home";
 import MyDay from "./components/myDay";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "tailwindcss/tailwind.css";
 import Important from "./components/important";
 import Layout from "./components/layout";
 import NotFound from "./components/notFound";
-import Account1 from "./components/account";
-import "@material-tailwind/react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import "tailwindcss/tailwind.css";
 import { ThemeProvider } from "@material-tailwind/react";
 
 export default function App() {
@@ -17,9 +14,10 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/home" element={<Home></Home>} />
-            <Route path="/myDay" element={<MyDay></MyDay>} />
-            <Route path="/important" element={<Important></Important>} />
+            <Route index element={<Navigate to="/home" />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/myDay" element={<MyDay />} />
+            <Route path="/important" element={<Important />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
