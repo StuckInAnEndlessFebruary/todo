@@ -8,7 +8,7 @@ import Sidebar from "./components/sidebar";
 import Layout from "./components/layout";
 import "tailwindcss/tailwind.css";
 import { Routes, Route, Outlet, BrowserRouter } from "react-router-dom";
-
+import "@material-tailwind/react";
 function App() {
   return (
     <div className="App">

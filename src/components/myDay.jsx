@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import TaskList from "./taskList";
 import TaskInput from "./taskInput";
 import { getTasks, saveTask } from "../data/tasks";
-
+import { ProgressBar } from "./progressBar";
+import SearchBar from "./searchBar";
 class MyDay extends Component {
   state = {
     tasks: getTasks(),
@@ -34,6 +35,7 @@ class MyDay extends Component {
     return (
       <div className="w-full">
         <h1 className="bg-clip-text  text-5xl  p-5">My Day</h1>
+        <SearchBar></SearchBar>
         <TaskList
           tasks={this.state.tasks}
           handleDelete={this.handleDelete}

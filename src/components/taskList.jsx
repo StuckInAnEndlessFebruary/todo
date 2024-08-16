@@ -36,9 +36,9 @@ const TaskList = ({
                 onChange={(e) => handlePriorityChange(task, e.target.value)}
                 className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block p-2 mr-2 h-10"
               >
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
+                <option value="low">priority: Low</option>
+                <option value="medium">priority: Medium</option>
+                <option value="high">priority: High</option>
               </select>
               <button
                 onClick={() => handleDelete(task)}
