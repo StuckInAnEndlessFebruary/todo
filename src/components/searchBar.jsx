@@ -1,6 +1,6 @@
 import React from "react";
 
-const SearchBar = () => {
+const SearchBar = ({ onSearchChange }) => {
   return (
     <form className="max-w-md ml-auto m-5 mr-10">
       <label
@@ -33,6 +33,7 @@ const SearchBar = () => {
           className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-teal-600 focus:border-teal-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500"
           placeholder="Search tasks..."
           required
+          onChange={(e) => onSearchChange(e.target.value)}
         />
         <button
           type="submit"

@@ -1,19 +1,22 @@
-// MyDay.jsx
 import React, { Component } from "react";
 import TaskList from "./taskList";
 import TaskInput from "./taskInput";
 import { getTasks, saveTask } from "../data/tasks";
 import { ProgressBar } from "./progressBar";
 import SearchBar from "./searchBar";
+
 class MyDay extends Component {
   state = {
     tasks: getTasks(),
     newTaskTitle: "",
+    searchQuery: "", // Add searchQuery state
   };
+
   handleDelete = (task) => {
     const tasks = this.state.tasks.filter((t) => t.title !== task.title);
     this.setState({ tasks: tasks });
   };
+
   handleChange = (task) => {
     const updatedTasks = this.state.tasks.map((t) => {
       if (t.title === task.title) {
@@ -23,21 +26,29 @@ class MyDay extends Component {
     });
     this.setState({ tasks: updatedTasks });
   };
+
   handlePriorityChange = (task, newPriority) => {
-    // Update the task's priority
     const updatedTasks = this.state.tasks.map((t) =>
       t.title === task.title ? { ...t, priority: newPriority } : t
     );
     this.setState({ tasks: updatedTasks });
   };
 
+  handleSearchChange = (query) => {
+    this.setState({ searchQuery: query });
+  };
+
   render() {
+    const filteredTasks = this.state.tasks.filter((task) =>
+      task.title.toLowerCase().includes(this.state.searchQuery.toLowerCase())
+    );
+
     return (
       <div className="w-full">
-        <h1 className="bg-clip-text  text-5xl  p-5">My Day</h1>
-        <SearchBar></SearchBar>
+        <h1 className="bg-clip-text text-5xl p-5">My Day</h1>
+        <SearchBar onSearchChange={this.handleSearchChange} />
         <TaskList
-          tasks={this.state.tasks}
+          tasks={filteredTasks}
           handleDelete={this.handleDelete}
           handleChange={this.handleChange}
           handlePriorityChange={this.handlePriorityChange}
