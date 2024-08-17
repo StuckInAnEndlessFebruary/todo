@@ -4,6 +4,7 @@ import TaskInput from "./taskInput";
 import { getTasks, saveTask } from "../data/tasks";
 import { ProgressBar } from "./progressBar";
 import SearchBar from "./searchBar";
+import TodoSvg from "./svgs/todo";
 
 class MyDay extends Component {
   state = {
@@ -45,7 +46,10 @@ class MyDay extends Component {
 
     return (
       <div className="w-full">
-        <h1 className="bg-clip-text text-5xl p-5">My Day</h1>
+        <div className="flex items-center">
+          <h1 className="bg-clip-text text-5xl p-5">My Day</h1>
+          <TodoSvg></TodoSvg>
+        </div>
         <SearchBar onSearchChange={this.handleSearchChange} />
         <TaskList
           tasks={filteredTasks}

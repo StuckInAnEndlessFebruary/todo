@@ -2,6 +2,7 @@ import ReactDOM from "react-dom/client";
 import Home from "./components/home";
 import MyDay from "./components/myDay";
 import Important from "./components/important";
+import FAQ from "./components/FAQ";
 import Layout from "./components/layout";
 import NotFound from "./components/notFound";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -18,6 +19,7 @@ export default function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/myDay" element={<MyDay />} />
             <Route path="/important" element={<Important />} />
+            <Route path="/FAQ" element={<FAQ />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

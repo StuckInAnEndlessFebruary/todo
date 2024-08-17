@@ -6,6 +6,7 @@ import { ProgressBar } from "./progressBar";
 import SearchBar from "./searchBar";
 import SortBar from "./sortBar"; // Import SortBar
 import useNotification from "./useNotification";
+import Todo2Svg from "./svgs/todo2";
 
 const Important = () => {
   const [tasks, setTasks] = useState(getTasks());
@@ -63,7 +64,10 @@ const Important = () => {
 
   return (
     <div className="w-full">
-      <h1 className="bg-clip-text text-5xl p-5">Important Tasks</h1>
+      <div className="flex items-center">
+        <h1 className="bg-clip-text text-5xl p-5">Important Tasks</h1>
+        <Todo2Svg />
+      </div>
       <SearchBar onSearchChange={handleSearchChange} />
       <SortBar onSortChange={handleSortChange} /> {/* Add SortBar */}
       <ImportantTaskList

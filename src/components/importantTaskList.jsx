@@ -24,10 +24,10 @@ const ImportantTaskList = ({ tasks, handleDelete, handleChange }) => {
                 editButtonProps={{ style: { marginLeft: "5px", width: 16 } }}
                 showEditButton
               />
-              <span className="ml-4 text-gray-500">{task.dueDate}</span>{" "}
-              {/* Display due date */}
             </div>
             <div className="flex items-center">
+              <span className="ml-4 text-gray-500">{task.dueDate}</span>{" "}
+              {/* Display due date */}
               <button
                 onClick={() => handleDelete(task)}
                 className="bg-teal-600 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline h-10"
