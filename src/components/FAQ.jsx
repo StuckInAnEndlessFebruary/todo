@@ -31,16 +31,20 @@ const FAQ = () => {
   return (
     <div className="flex justify-center items-start p-5">
       <div className="max-w-2xl mx-auto p-5">
-        <h1 className="text-3xl font-bold mb-5">Frequently Asked Questions</h1>
+        <h1 className="text-3xl font-bold mb-5 dark:text-gray-200">
+          Frequently Asked Questions
+        </h1>
         <ul className="space-y-4">
           {faqs.map((faq, index) => (
             <li
               key={index}
-              className="bg-white p-4 rounded-lg shadow-md flex items-start"
+              className="bg-white p-4 rounded-lg shadow-md flex items-start dark:bg-gray-600 "
             >
               <div>
-                <h2 className="text-xl font-semibold mb-2">{faq.question}</h2>
-                <p className="text-gray-700">{faq.answer}</p>
+                <h2 className="text-xl font-semibold mb-2 dark:text-gray-200">
+                  {faq.question}
+                </h2>
+                <p className="text-gray-700 dark:text-gray-300">{faq.answer}</p>
               </div>
             </li>
           ))}

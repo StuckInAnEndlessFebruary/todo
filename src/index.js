@@ -8,11 +8,12 @@ import NotFound from "./components/notFound";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "tailwindcss/tailwind.css";
 import { ThemeProvider } from "@material-tailwind/react";
-
+import DarkModeToggle from "./components/darkModeToggle";
 export default function App() {
   return (
     <ThemeProvider>
       <BrowserRouter>
+        <DarkModeToggle></DarkModeToggle>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Navigate to="/home" />} />

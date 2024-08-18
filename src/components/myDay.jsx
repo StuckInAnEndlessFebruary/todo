@@ -47,7 +47,9 @@ class MyDay extends Component {
     return (
       <div className="w-full">
         <div className="flex items-center">
-          <h1 className="bg-clip-text text-5xl p-5">My Day</h1>
+          <h1 className="bg-clip-text text-5xl p-5 dark:text-gray-200 ">
+            My Day
+          </h1>
           <TodoSvg></TodoSvg>
         </div>
         <SearchBar onSearchChange={this.handleSearchChange} />

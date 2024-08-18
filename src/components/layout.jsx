@@ -9,7 +9,7 @@ const Layout = () => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex dark:bg-gray-900">
       <aside
         className={`${
           isSidebarVisible ? "w-60" : "w-0"

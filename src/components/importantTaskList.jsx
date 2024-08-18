@@ -5,11 +5,11 @@ import "react-edit-text/dist/index.css";
 const ImportantTaskList = ({ tasks, handleDelete, handleChange }) => {
   return (
     <div className="flex justify-center rounded-lg m-10">
-      <ul className="bg-white rounded-lg w-96 text-gray-900 w-full">
+      <ul className="bg-white rounded-lg w-96 text-gray-900 w-full dark:bg-gray-900 dark:text-gray-200">
         {tasks.map((task) => (
           <li
             key={task.title}
-            className="flex items-center justify-between px-6 py-2 border-b border-gray-200 rounded-t-lg"
+            className="flex items-center justify-between px-6 py-2 border-b border-gray-200 rounded-t-lg dark:bg-gray-900"
           >
             <div className="flex items-center">
               <input

@@ -15,10 +15,10 @@ const ImportantTaskInput = ({
 
   return (
     <div className="flex justify-center border border-teal-500 rounded-lg m-10">
-      <ul className="bg-white rounded-lg w-96 text-gray-900 w-full">
+      <ul className="bg-white rounded-lg w-96 text-gray-900 w-full dark:bg-gray-800 dark:text-gray-200">
         <li className="flex items-center px-6 py-2 rounded-t-lg">
           <input
-            className="outline-none w-full m-1"
+            className="outline-none w-full m-1 dark:bg-gray-800"
             type="text"
             placeholder="Enter a task..."
             value={newTaskTitle}
@@ -27,7 +27,7 @@ const ImportantTaskInput = ({
           />
           <input
             type="date"
-            className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block p-2 mr-2 h-10"
+            className="bg-white text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block p-2 mr-2 h-10 dark:bg-gray-600 dark:text-gray-200"
             value={dueDate}
             onChange={(e) => setDueDate(e.target.value)}
           />

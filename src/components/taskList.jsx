@@ -11,7 +11,7 @@ const TaskList = ({
 }) => {
   return (
     <div className="flex justify-center rounded-lg m-10">
-      <ul className="bg-white rounded-lg w-96 text-gray-900 w-full">
+      <ul className="bg-white rounded-lg w-96 text-gray-900 w-full dark:text-gray-200 dark:bg-gray-900">
         {tasks.map((task) => (
           <li
             key={task.title}
@@ -35,7 +35,7 @@ const TaskList = ({
               <select
                 value={task.priority}
                 onChange={(e) => handlePriorityChange(task, e.target.value)}
-                className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block p-2 mr-2 h-10"
+                className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block p-2 mr-2 h-10 dark:bg-gray-600 dark:text-gray-200"
               >
                 <option value="low">priority: Low</option>
                 <option value="medium">priority: Medium</option>

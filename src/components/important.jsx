@@ -65,7 +65,9 @@ const Important = () => {
   return (
     <div className="w-full">
       <div className="flex items-center">
-        <h1 className="bg-clip-text text-5xl p-5">Important Tasks</h1>
+        <h1 className="bg-clip-text text-5xl p-5 dark:text-gray-200 ">
+          Important Tasks
+        </h1>
         <Todo2Svg />
       </div>
       <SearchBar onSearchChange={handleSearchChange} />

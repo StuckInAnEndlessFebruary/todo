@@ -42,7 +42,7 @@ export function NotFound() {
           or come back later.
         </p>
         <Link to="/home">
-          <button class="bg-white hover:bg-teal-600 hover:text-white text-gray-800 font-semibold py-2 px-4 border border-teal-600 rounded shadow">
+          <button class="bg-white hover:bg-teal-600 hover:text-white text-gray-800 font-semibold py-2 px-4 border border-teal-600 rounded shadow dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-teal-600 dark:hover:text-white">
             Back Home
           </button>
         </Link>
