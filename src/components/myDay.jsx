@@ -8,7 +8,7 @@ import TodoSvg from "./svgs/todo";
 import axios from "axios";
 import Pagination from "./pagination";
 
-const apiEndPoint = "https://jsonplaceholder.typicode.com/todos?_limit=50";
+const apiEndPoint = "https://jsonplaceholder.typicode.com/todos";
 
 class MyDay extends Component {
   state = {
@@ -20,7 +20,7 @@ class MyDay extends Component {
   };
 
   async componentDidMount() {
-    const { data: tasks } = await axios.get(apiEndPoint);
+    const { data: tasks } = await axios.get(apiEndPoint + "?_limit=50");
     this.setState({ tasks });
   }
 
