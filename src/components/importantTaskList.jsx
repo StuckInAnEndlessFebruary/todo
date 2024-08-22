@@ -23,6 +23,7 @@ const ImportantTaskList = ({ tasks, handleDelete, handleChange }) => {
                 defaultValue={task.title}
                 editButtonProps={{ style: { marginLeft: "5px", width: 16 } }}
                 showEditButton
+                className="bg-white dark:bg-gray-900"
               />
             </div>
             <div className="flex items-center">

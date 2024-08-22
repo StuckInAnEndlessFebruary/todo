@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ImportantTaskInput from "./importantTaskInput";
 import ImportantTaskList from "./importantTaskList";
-import { getTasks, saveTask } from "../data/importantTasks"; // Update import
-import { ProgressBar } from "./progressBar";
+import { getTasks, saveTask } from "../data/importantTasks";
 import SearchBar from "./searchBar";
 import SortBar from "./sortBar"; // Import SortBar
 import useNotification from "./useNotification";
 import Todo2Svg from "./svgs/todo2";
+import Pagination from "./pagination"; // Import Pagination
 
 const Important = () => {
   const [tasks, setTasks] = useState(getTasks());
   const [newTaskTitle, setNewTaskTitle] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortOrder, setSortOrder] = useState("none"); // Add sortOrder state
+  const [sortOrder, setSortOrder] = useState("none");
+  const [currentPage, setCurrentPage] = useState(1); // Add currentPage state
+  const pageSize = 4; // Set the desired page size
 
   useNotification(tasks);
 
@@ -60,22 +62,28 @@ const Important = () => {
       } else {
         return 0;
       }
-    });
+    })
+    .slice((currentPage - 1) * pageSize, currentPage * pageSize); // Apply pagination
 
   return (
     <div className="w-full">
       <div className="flex items-center">
-        <h1 className="bg-clip-text text-5xl p-5 dark:text-gray-200 ">
+        <h1 className="bg-clip-text text-5xl p-5 dark:text-gray-200">
           Important Tasks
         </h1>
         <Todo2Svg />
       </div>
       <SearchBar onSearchChange={handleSearchChange} />
-      <SortBar onSortChange={handleSortChange} /> {/* Add SortBar */}
+      <SortBar onSortChange={handleSortChange} />
       <ImportantTaskList
         tasks={filteredTasks}
         handleDelete={handleDelete}
         handleChange={handleChange}
+      />
+      <Pagination
+        currentPage={currentPage}
+        totalPages={Math.ceil(tasks.length / pageSize)}
+        onPageChange={setCurrentPage} // Update current page when pagination changes
       />
       <ImportantTaskInput
         newTaskTitle={newTaskTitle}
