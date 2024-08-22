@@ -34,6 +34,7 @@ const FAQ = () => {
         <h1 className="text-3xl font-bold mb-5 dark:text-gray-200">
           Frequently Asked Questions
         </h1>
+
         <ul className="space-y-4">
           {faqs.map((faq, index) => (
             <li

@@ -5,17 +5,38 @@ import { getTasks, saveTask } from "../data/tasks";
 import { ProgressBar } from "./progressBar";
 import SearchBar from "./searchBar";
 import TodoSvg from "./svgs/todo";
+import axios from "axios";
+import Pagination from "./pagination";
+
+const apiEndPoint = "https://jsonplaceholder.typicode.com/todos?_limit=50";
 
 class MyDay extends Component {
   state = {
-    tasks: getTasks(),
+    tasks: [],
     newTaskTitle: "",
     searchQuery: "", // Add searchQuery state
+    currentPage: 1, // Initialize current page to 1
+    pageSize: 4, // Set the desired page size
   };
 
-  handleDelete = (task) => {
-    const tasks = this.state.tasks.filter((t) => t.title !== task.title);
+  async componentDidMount() {
+    const { data: tasks } = await axios.get(apiEndPoint);
+    this.setState({ tasks });
+  }
+
+  handleDelete = async (task) => {
+    await axios.delete(apiEndPoint + "/" + task.id);
+    const tasks = this.state.tasks.filter((t) => t.id !== task.id);
     this.setState({ tasks: tasks });
+  };
+
+  handleAddTask = async () => {
+    const obj = { title: this.state.newTaskTitle };
+    if (obj) {
+      const { data: newTask } = await axios.post(apiEndPoint, obj);
+      const updatedTasks = [...this.state.tasks, newTask];
+      this.setState({ tasks: updatedTasks, newTaskTitle: "" });
+    }
   };
 
   handleChange = (task) => {
@@ -38,11 +59,17 @@ class MyDay extends Component {
   handleSearchChange = (query) => {
     this.setState({ searchQuery: query });
   };
+  handlePageChange = (newPage) => {
+    this.setState({ currentPage: newPage });
+  };
 
   render() {
-    const filteredTasks = this.state.tasks.filter((task) =>
-      task.title.toLowerCase().includes(this.state.searchQuery.toLowerCase())
-    );
+    const { tasks, currentPage, pageSize, searchQuery } = this.state;
+    const filteredTasks = tasks
+      .filter((task) =>
+        task.title.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+      .slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
     return (
       <div className="w-full">
@@ -59,20 +86,18 @@ class MyDay extends Component {
           handleChange={this.handleChange}
           handlePriorityChange={this.handlePriorityChange}
         />
+        <Pagination
+          currentPage={currentPage}
+          totalPages={Math.ceil(tasks.length / pageSize)}
+          onPageChange={this.handlePageChange}
+        />
         <TaskInput
           newTaskTitle={this.state.newTaskTitle}
           handleInputChange={(e) => {
             const newValue = e.target.value;
             this.setState({ newTaskTitle: newValue });
           }}
-          handleAddTask={() => {
-            const newTaskTitle = this.state.newTaskTitle;
-            if (newTaskTitle) {
-              const newTask = saveTask({ title: newTaskTitle });
-              const updatedTasks = [...this.state.tasks, newTask];
-              this.setState({ tasks: updatedTasks, newTaskTitle: "" });
-            }
-          }}
+          handleAddTask={this.handleAddTask}
         />
       </div>
     );

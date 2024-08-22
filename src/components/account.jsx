@@ -18,7 +18,7 @@ import { DayPicker } from "react-day-picker";
 // @heroicons/react
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 
-function Account1() {
+function Account() {
   const [date, setDate] = React.useState();
 
   return (
@@ -337,4 +337,4 @@ function Account1() {
   );
 }
 
-export default Account1;
+export default Account;
