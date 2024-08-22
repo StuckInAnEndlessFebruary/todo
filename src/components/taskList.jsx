@@ -1,4 +1,3 @@
-//taskList.jsx
 import React from "react";
 import { EditText } from "react-edit-text";
 import "react-edit-text/dist/index.css";
@@ -15,13 +14,13 @@ const TaskList = ({
         {tasks.map((task) => (
           <li
             key={task.title}
-            className="flex items-center justify-between px-6 py-2 border-b border-gray-200 rounded-t-lg "
+            className="flex items-center justify-between px-6 py-2 border-b border-gray-200 rounded-t-lg"
           >
             <div className="flex items-center">
               <input
                 onChange={() => handleChange(task)}
                 type="checkbox"
-                className="mr-2 w-6 h-6 accent-teal-600 rounded-full border-gray-300 transition-transform transform hover:scale-110 "
+                className="mr-2 w-6 h-6 accent-teal-600 rounded-full border-gray-300 transition-transform transform hover:scale-110 dark:text-gray-900 "
                 checked={task.done}
               />
               <EditText
@@ -29,7 +28,9 @@ const TaskList = ({
                 defaultValue={task.title}
                 editButtonProps={{ style: { marginLeft: "5px", width: 16 } }}
                 showEditButton
-                className="bg-white dark:bg-gray-900"
+                className={`bg-white dark:bg-gray-900 ${
+                  task.done ? "line-through text-gray-500" : ""
+                }`}
               />
             </div>
             <div className="flex items-center">
