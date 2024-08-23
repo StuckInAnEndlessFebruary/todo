@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import TaskList from "./taskList";
 import TaskInput from "./taskInput";
-import { getTasks, saveTask } from "../data/tasks";
 import { ProgressBar } from "./progressBar";
 import SearchBar from "./searchBar";
 import TodoSvg from "./svgs/todo";
 import Pagination from "./pagination";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import http from "../services/httpService";
-import config from "../config.json";
+import "../services/todoService";
+import { getTasks, deleteTask, saveTask } from "../services/todoService";
 
 class MyDay extends Component {
   state = {
@@ -21,12 +20,12 @@ class MyDay extends Component {
   };
 
   async componentDidMount() {
-    const { data: tasks } = await http.get(config.apiEndpoint + "?_limit=50");
+    const { data: tasks } = await getTasks();
     this.setState({ tasks });
   }
 
   handleDelete = async (task) => {
-    await http.delete(config.apiEndpoint + "/" + task.id);
+    await deleteTask(task.id);
     const tasks = this.state.tasks.filter((t) => t.id !== task.id);
     this.setState({ tasks: tasks });
     toast.error("Task Deleted", {
@@ -44,7 +43,7 @@ class MyDay extends Component {
   handleAddTask = async () => {
     const obj = { title: this.state.newTaskTitle };
     if (obj) {
-      const { data: newTask } = await http.post(config.apiEndpoint, obj);
+      const { data: newTask } = await saveTask(obj);
       const updatedTasks = [...this.state.tasks, newTask];
       this.setState({ tasks: updatedTasks, newTaskTitle: "" });
       toast.success("Task Added successfully", {

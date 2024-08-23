@@ -87,7 +87,7 @@ const Home = () => {
             </svg>
           </a>
           <a
-            href="/important"
+            href="/signUp"
             className="mb-5 ml-10 inline-flex items-center font-medium text-teal-600 dark:text-teal-500 hover:underline"
           >
             <svg
