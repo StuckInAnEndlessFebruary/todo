@@ -12,6 +12,12 @@ import { ThemeProvider } from "@material-tailwind/react";
 import DarkModeToggle from "./components/darkModeToggle";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import * as Sentry from "@sentry/react";
+
+Sentry.init({
+  dsn: "https://3bee024c7165e2b16b287c1ae3e9cf32@o4507825747132416.ingest.us.sentry.io/4507825760501760",
+  integrations: [],
+});
 
 export default function App() {
   return (
