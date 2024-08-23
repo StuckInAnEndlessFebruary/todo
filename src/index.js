@@ -10,13 +10,15 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "tailwindcss/tailwind.css";
 import { ThemeProvider } from "@material-tailwind/react";
 import DarkModeToggle from "./components/darkModeToggle";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function App() {
   return (
     <ThemeProvider>
       <BrowserRouter>
         <DarkModeToggle />
-
+        <ToastContainer></ToastContainer>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Navigate to="/home" />} />

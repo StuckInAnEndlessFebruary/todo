@@ -5,10 +5,11 @@ import { getTasks, saveTask } from "../data/tasks";
 import { ProgressBar } from "./progressBar";
 import SearchBar from "./searchBar";
 import TodoSvg from "./svgs/todo";
-import axios from "axios";
 import Pagination from "./pagination";
-
-const apiEndPoint = "https://jsonplaceholder.typicode.com/todos";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import http from "../services/httpService";
+import config from "../config.json";
 
 class MyDay extends Component {
   state = {
@@ -20,22 +21,42 @@ class MyDay extends Component {
   };
 
   async componentDidMount() {
-    const { data: tasks } = await axios.get(apiEndPoint + "?_limit=50");
+    const { data: tasks } = await http.get(config.apiEndpoint + "?_limit=50");
     this.setState({ tasks });
   }
 
   handleDelete = async (task) => {
-    await axios.delete(apiEndPoint + "/" + task.id);
+    await http.delete(config.apiEndpoint + "/" + task.id);
     const tasks = this.state.tasks.filter((t) => t.id !== task.id);
     this.setState({ tasks: tasks });
+    toast.error("Task Deleted", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   };
 
   handleAddTask = async () => {
     const obj = { title: this.state.newTaskTitle };
     if (obj) {
-      const { data: newTask } = await axios.post(apiEndPoint, obj);
+      const { data: newTask } = await http.post(config.apiEndpoint, obj);
       const updatedTasks = [...this.state.tasks, newTask];
       this.setState({ tasks: updatedTasks, newTaskTitle: "" });
+      toast.success("Task Added successfully", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
   };
 

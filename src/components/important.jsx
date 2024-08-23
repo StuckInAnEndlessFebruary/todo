@@ -7,6 +7,7 @@ import SortBar from "./sortBar"; // Import SortBar
 import useNotification from "./useNotification";
 import Todo2Svg from "./svgs/todo2";
 import Pagination from "./pagination"; // Import Pagination
+import { ToastContainer, toast } from "react-toastify";
 
 const Important = () => {
   const [tasks, setTasks] = useState(getTasks());
@@ -21,6 +22,16 @@ const Important = () => {
   const handleDelete = (task) => {
     const updatedTasks = tasks.filter((t) => t.title !== task.title);
     setTasks(updatedTasks);
+    toast.error("Task Deleted", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   };
 
   const handleChange = (task) => {
@@ -47,6 +58,16 @@ const Important = () => {
       const updatedTasks = [...tasks, newTask];
       setTasks(updatedTasks);
       setNewTaskTitle("");
+      toast.success("Task Added successfully", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
   };
 
