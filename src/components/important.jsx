@@ -80,6 +80,10 @@ const Important = () => {
         return new Date(a.dueDate) - new Date(b.dueDate);
       } else if (sortOrder === "dueDateDesc") {
         return new Date(b.dueDate) - new Date(a.dueDate);
+      } else if (sortOrder === "alphaAsc") {
+        return a.title.localeCompare(b.title);
+      } else if (sortOrder === "alphaDesc") {
+        return b.title.localeCompare(a.title);
       } else {
         return 0;
       }

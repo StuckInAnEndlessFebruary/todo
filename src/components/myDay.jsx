@@ -5,6 +5,7 @@ import { ProgressBar } from "./progressBar";
 import SearchBar from "./searchBar";
 import TodoSvg from "./svgs/todo";
 import Pagination from "./pagination";
+import SortBar2 from "./sortBar2"; // Import SortBar
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../services/todoService";
@@ -16,7 +17,8 @@ class MyDay extends Component {
     newTaskTitle: "",
     searchQuery: "", // Add searchQuery state
     currentPage: 1, // Initialize current page to 1
-    pageSize: 4, // Set the desired page size
+    pageSize: 3, // Set the desired page size
+    sortOrder: "none", // Add sortOrder state
   };
 
   async componentDidMount() {
@@ -79,16 +81,30 @@ class MyDay extends Component {
   handleSearchChange = (query) => {
     this.setState({ searchQuery: query });
   };
+
+  handleSortChange = (order) => {
+    this.setState({ sortOrder: order });
+  };
+
   handlePageChange = (newPage) => {
     this.setState({ currentPage: newPage });
   };
 
   render() {
-    const { tasks, currentPage, pageSize, searchQuery } = this.state;
+    const { tasks, currentPage, pageSize, searchQuery, sortOrder } = this.state;
     const filteredTasks = tasks
       .filter((task) =>
         task.title.toLowerCase().includes(searchQuery.toLowerCase())
       )
+      .sort((a, b) => {
+        if (sortOrder === "alphaAsc") {
+          return a.title.localeCompare(b.title);
+        } else if (sortOrder === "alphaDesc") {
+          return b.title.localeCompare(a.title);
+        } else {
+          return 0;
+        }
+      })
       .slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
     return (
@@ -100,6 +116,7 @@ class MyDay extends Component {
           <TodoSvg></TodoSvg>
         </div>
         <SearchBar onSearchChange={this.handleSearchChange} />
+        <SortBar2 onSortChange={this.handleSortChange} />
         <TaskList
           tasks={filteredTasks}
           handleDelete={this.handleDelete}

@@ -2,13 +2,11 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSort,
-  faSortUp,
-  faSortDown,
   faSortAlphaDown,
   faSortAlphaUp,
 } from "@fortawesome/free-solid-svg-icons";
 
-const SortBar = ({ onSortChange }) => {
+const SortBar2 = ({ onSortChange }) => {
   return (
     <div className="max-w-xs ml-auto m-5 mr-10">
       <div className="relative">
@@ -20,14 +18,6 @@ const SortBar = ({ onSortChange }) => {
           <option value="none">
             <FontAwesomeIcon icon={faSort} className="mr-2" />
             Sort by
-          </option>
-          <option value="dueDateAsc">
-            <FontAwesomeIcon icon={faSortUp} className="mr-2" />
-            Due Date (Ascending)
-          </option>
-          <option value="dueDateDesc">
-            <FontAwesomeIcon icon={faSortDown} className="mr-2" />
-            Due Date (Descending)
           </option>
           <option value="alphaAsc">
             <FontAwesomeIcon icon={faSortAlphaUp} className="mr-2" />
@@ -49,4 +39,4 @@ const SortBar = ({ onSortChange }) => {
   );
 };
 
-export default SortBar;
+export default SortBar2;

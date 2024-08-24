@@ -1,4 +1,3 @@
-//taskInput.jsx
 import React from "react";
 
 const TaskInput = ({ newTaskTitle, handleInputChange, handleAddTask }) => {
@@ -20,11 +19,6 @@ const TaskInput = ({ newTaskTitle, handleInputChange, handleAddTask }) => {
             onChange={handleInputChange}
             onKeyPress={handleKeyPress}
           />
-          <select className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block p-2 mr-2 h-10 dark:bg-gray-600 dark:text-gray-200">
-            <option>priority: Low</option>
-            <option>priority: Medium</option>
-            <option>priority: High</option>
-          </select>
           <button
             onClick={handleAddTask}
             className="transition duration-500 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline border border-gray-200 bg-gray-200 text-gray-700 rounded-md px-4 py-1 m-2 transition duration-500 ease select-none hover:bg-gray-300 focus:outline-none focus:shadow-outline ml-auto"

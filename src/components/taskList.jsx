@@ -34,15 +34,6 @@ const TaskList = ({
               />
             </div>
             <div className="flex items-center">
-              <select
-                value={task.priority}
-                onChange={(e) => handlePriorityChange(task, e.target.value)}
-                className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block p-2 mr-2 h-10 dark:bg-gray-600 dark:text-gray-200"
-              >
-                <option value="low">priority: Low</option>
-                <option value="medium">priority: Medium</option>
-                <option value="high">priority: High</option>
-              </select>
               <button
                 onClick={() => handleDelete(task)}
                 className="bg-teal-600 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline h-10"
