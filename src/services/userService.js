@@ -12,3 +12,10 @@ export function register(user) {
     name: user.name,
   });
 }
+
+export function signIn(credentials) {
+  return http.post(`${apiUrl}/auth`, {
+    email: credentials.username,
+    password: credentials.password,
+  });
+}

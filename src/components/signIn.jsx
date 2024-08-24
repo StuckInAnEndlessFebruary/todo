@@ -1,7 +1,29 @@
-import React from "react";
-import Signinsvg from "./svgs/signin"; // Assuming you have a sign-in SVG component
+import React, { useState } from "react";
+import Signinsvg from "./svgs/signin";
+import { signIn } from "../services/userService";
 
 const SignIn = () => {
+  const [credentials, setCredentials] = useState({
+    username: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setCredentials({ ...credentials, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await signIn(credentials);
+      console.log("Sign-in successful:", response);
+      // Handle successful sign-in (e.g., redirect to dashboard)
+    } catch (error) {
+      console.error("Sign-in failed:", error);
+    }
+  };
+
   return (
     <div>
       <section className="flex flex-col items-center py-6">
@@ -10,7 +32,7 @@ const SignIn = () => {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Sign In
             </h1>
-            <form className="space-y-4 md:space-y-6" method="POST">
+            <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="username"
@@ -25,6 +47,8 @@ const SignIn = () => {
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500"
                   placeholder="Enter your username"
                   required
+                  value={credentials.username}
+                  onChange={handleChange}
                 />
               </div>
               <div>
@@ -41,6 +65,8 @@ const SignIn = () => {
                   placeholder="••••••••"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-teal-600 focus:border-teal-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500"
                   required
+                  value={credentials.password}
+                  onChange={handleChange}
                 />
               </div>
               <button
