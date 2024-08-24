@@ -1,12 +1,13 @@
 import React from "react";
 import { EditText } from "react-edit-text";
 import "react-edit-text/dist/index.css";
+import Favorite from "./favorite";
 
 const TaskList = ({
   tasks,
   handleDelete,
   handleChange,
-  handlePriorityChange,
+  handleFavoriteToggle,
 }) => {
   return (
     <div className="flex justify-center rounded-lg m-10">
@@ -34,6 +35,11 @@ const TaskList = ({
               />
             </div>
             <div className="flex items-center">
+              <Favorite
+                id={`favorite-${task.title}`}
+                isFavorite={task.isFavorite}
+                onFavoriteToggle={() => handleFavoriteToggle(task)}
+              />
               <button
                 onClick={() => handleDelete(task)}
                 className="bg-teal-600 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline h-10"

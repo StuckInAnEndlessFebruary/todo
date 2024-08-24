@@ -1,33 +1,27 @@
 import React, { Component } from "react";
 import TaskList from "./taskList";
-import TaskInput from "./taskInput";
-import { ProgressBar } from "./progressBar";
 import SearchBar from "./searchBar";
 import TodoSvg from "./svgs/todo";
 import Pagination from "./pagination";
-import SortBar2 from "./sortBar2"; // Import SortBar
+import SortBar from "./sortBar"; // Import SortBar
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../services/todoService";
 import { getTasks, deleteTask, saveTask } from "../services/todoService";
 
-class MyDay extends Component {
+class Favorites extends Component {
   state = {
     tasks: [],
-    newTaskTitle: "",
     searchQuery: "", // Add searchQuery state
     currentPage: 1, // Initialize current page to 1
-    pageSize: 3, // Set the desired page size
+    pageSize: 4, // Set the desired page size
     sortOrder: "none", // Add sortOrder state
   };
 
   async componentDidMount() {
     const { data: tasks } = await getTasks();
-    const tasksWithFavorite = tasks.map((task) => ({
-      ...task,
-      isFavorite: false,
-    }));
-    this.setState({ tasks: tasksWithFavorite });
+    const favoriteTasks = tasks.filter((task) => task.isFavorite);
+    this.setState({ tasks: favoriteTasks });
   }
 
   handleDelete = async (task) => {
@@ -44,25 +38,6 @@ class MyDay extends Component {
       progress: undefined,
       theme: "colored",
     });
-  };
-
-  handleAddTask = async () => {
-    const obj = { title: this.state.newTaskTitle, isFavorite: false };
-    if (obj) {
-      const { data: newTask } = await saveTask(obj);
-      const updatedTasks = [...this.state.tasks, newTask];
-      this.setState({ tasks: updatedTasks, newTaskTitle: "" });
-      toast.success("Task Added successfully", {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
-    }
   };
 
   handleChange = (task) => {
@@ -122,12 +97,12 @@ class MyDay extends Component {
       <div className="w-full">
         <div className="flex items-center">
           <h1 className="bg-clip-text text-5xl p-5 dark:text-gray-200 ">
-            My Day
+            Favorites
           </h1>
           <TodoSvg></TodoSvg>
         </div>
         <SearchBar onSearchChange={this.handleSearchChange} />
-        <SortBar2 onSortChange={this.handleSortChange} />
+        <SortBar onSortChange={this.handleSortChange} />
         <TaskList
           tasks={filteredTasks}
           handleDelete={this.handleDelete}
@@ -140,17 +115,9 @@ class MyDay extends Component {
           totalPages={Math.ceil(tasks.length / pageSize)}
           onPageChange={this.handlePageChange}
         />
-        <TaskInput
-          newTaskTitle={this.state.newTaskTitle}
-          handleInputChange={(e) => {
-            const newValue = e.target.value;
-            this.setState({ newTaskTitle: newValue });
-          }}
-          handleAddTask={this.handleAddTask}
-        />
       </div>
     );
   }
 }
 
-export default MyDay;
+export default Favorites;

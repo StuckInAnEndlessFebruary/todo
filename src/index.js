@@ -8,6 +8,7 @@ import NotFound from "./components/notFound";
 import Account from "./components/account";
 import SignUp from "./components/signup";
 import SignIn from "./components/signIn";
+import Favorites from "./components/favorites";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "tailwindcss/tailwind.css";
 import { ThemeProvider } from "@material-tailwind/react";
@@ -33,6 +34,7 @@ export default function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/myDay" element={<MyDay />} />
             <Route path="/important" element={<Important />} />
+            <Route path="/favorites" element={<Favorites />} />
             <Route path="/FAQ" element={<FAQ />} />
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/signIn" element={<SignIn />} />
