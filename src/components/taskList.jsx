@@ -2,6 +2,7 @@ import React from "react";
 import { EditText } from "react-edit-text";
 import "react-edit-text/dist/index.css";
 import Favorite from "./favorite";
+import Checkbox from "./checkbox";
 
 const TaskList = ({
   tasks,
@@ -18,11 +19,9 @@ const TaskList = ({
             className="flex items-center justify-between px-6 py-2 border-b border-gray-200 rounded-t-lg"
           >
             <div className="flex items-center">
-              <input
-                onChange={() => handleChange(task)}
-                type="checkbox"
-                className="mr-2 w-6 h-6 accent-teal-600 rounded-full border-gray-300 transition-transform transform hover:scale-110 dark:text-gray-900 "
+              <Checkbox
                 checked={task.done}
+                onChange={() => handleChange(task)}
               />
               <EditText
                 name="textbox3"
