@@ -19,7 +19,7 @@ const Favorite = ({ id, isFavorite, onFavoriteToggle }) => {
           height="24"
           viewBox="0 0 24 24"
           fill={isFavorite ? "currentColor" : "none"}
-          stroke="currentColor"
+          stroke={isFavorite ? "currentColor" : "#545b66"}
           strokeWidth={2}
           strokeLinecap="round"
           strokeLinejoin="round"

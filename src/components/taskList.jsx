@@ -3,6 +3,7 @@ import { EditText } from "react-edit-text";
 import "react-edit-text/dist/index.css";
 import Favorite from "./favorite";
 import Checkbox from "./checkbox";
+import CustomEditIcon from "./svgs/editIcon";
 
 const TaskList = ({
   tasks,
@@ -29,7 +30,14 @@ const TaskList = ({
                 <EditText
                   name="textbox3"
                   defaultValue={task.title}
-                  editButtonProps={{ style: { width: 16 } }}
+                  editButtonContent={<CustomEditIcon></CustomEditIcon>}
+                  editButtonProps={{
+                    style: {
+                      width: 16,
+                      background: "transparent",
+                      border: "none",
+                    },
+                  }}
                   showEditButton
                   className={`bg-white dark:bg-gray-900 ${
                     task.completed ? "line-through text-gray-500" : ""
