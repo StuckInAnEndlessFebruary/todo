@@ -39,9 +39,10 @@ const TaskList = ({
                     },
                   }}
                   showEditButton
-                  className={`bg-white dark:bg-gray-900 ${
+                  className={`bg-white dark:bg-gray-900  ${
                     task.completed ? "line-through text-gray-500" : ""
                   }`}
+                  inputClassName="dark:bg-gray-700"
                 />
               </div>
             </div>

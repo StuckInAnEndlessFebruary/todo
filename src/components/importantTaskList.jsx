@@ -1,6 +1,8 @@
 import React from "react";
 import { EditText } from "react-edit-text";
 import "react-edit-text/dist/index.css";
+import Checkbox from "./checkbox";
+import CustomEditIcon from "./svgs/editIcon";
 
 const ImportantTaskList = ({ tasks, handleDelete, handleChange }) => {
   return (
@@ -12,19 +14,31 @@ const ImportantTaskList = ({ tasks, handleDelete, handleChange }) => {
             className="flex items-center justify-between px-6 py-2 border-b border-gray-200 rounded-t-lg dark:bg-gray-900"
           >
             <div className="flex items-center">
-              <input
-                onChange={() => handleChange(task)}
-                type="checkbox"
-                className="mr-2 w-6 h-6 accent-teal-600 rounded-full border-gray-300 transition-transform transform hover:scale-110"
+              <Checkbox
                 checked={task.done}
+                onChange={() => handleChange(task)}
               />
-              <EditText
-                name="textbox3"
-                defaultValue={task.title}
-                editButtonProps={{ style: { marginLeft: "5px", width: 16 } }}
-                showEditButton
-                className="bg-white dark:bg-gray-900"
-              />
+              <div className="text-container ml-3">
+                {" "}
+                {/* Added class */}
+                <EditText
+                  name="textbox3"
+                  defaultValue={task.title}
+                  editButtonContent={<CustomEditIcon></CustomEditIcon>}
+                  editButtonProps={{
+                    style: {
+                      width: 16,
+                      background: "transparent",
+                      border: "none",
+                    },
+                  }}
+                  showEditButton
+                  className={`bg-white dark:bg-gray-900 ${
+                    task.done ? "line-through text-gray-500" : ""
+                  }`}
+                  inputClassName="dark:bg-gray-700"
+                />
+              </div>
             </div>
             <div className="flex items-center">
               <span className="ml-4 text-gray-500">{task.dueDate}</span>{" "}
