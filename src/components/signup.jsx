@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Signupsvg from "./svgs/signup";
 import { register } from "../services/userService";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -96,12 +97,12 @@ const SignUp = () => {
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Already have an account?{" "}
-                <a
+                <Link
                   className="font-medium text-teal-600 hover:underline dark:text-teal-500"
-                  href="/signin"
+                  to="/signin"
                 >
                   Sign in here
-                </a>
+                </Link>
               </p>
             </form>
           </div>

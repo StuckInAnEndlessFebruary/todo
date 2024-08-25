@@ -1,6 +1,7 @@
 import React from "react";
 import Checksvg from "./svgs/check";
 import TaskInput from "./taskInput";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -16,8 +17,8 @@ const Home = () => {
           <h1 className="pl-10 text-xl  leading-none tracking-tight md:text-2xl xl:text-3xl dark:text-white">
             Quick Start
           </h1>
-          <a
-            href="/myDay"
+          <Link
+            to="/myDay"
             className="m-5 ml-10 inline-flex items-center font-medium text-teal-600 dark:text-teal-500 hover:underline"
           >
             <svg
@@ -50,9 +51,9 @@ const Home = () => {
                 d="M1 5h12m0 0L9 1m4 4L9 9"
               />
             </svg>
-          </a>
-          <a
-            href="/important"
+          </Link>
+          <Link
+            to="/important"
             className="mb-5 ml-10 inline-flex items-center font-medium text-teal-600 dark:text-teal-500 hover:underline"
           >
             <svg
@@ -85,9 +86,9 @@ const Home = () => {
                 d="M1 5h12m0 0L9 1m4 4L9 9"
               />
             </svg>
-          </a>
-          <a
-            href="/signUp"
+          </Link>
+          <Link
+            to="/signUp"
             className="mb-5 ml-10 inline-flex items-center font-medium text-teal-600 dark:text-teal-500 hover:underline"
           >
             <svg
@@ -120,9 +121,9 @@ const Home = () => {
                 d="M1 5h12m0 0L9 1m4 4L9 9"
               />
             </svg>
-          </a>
-          <a
-            href="/FAQ"
+          </Link>
+          <Link
+            to="/FAQ"
             className="mb-5 ml-10 inline-flex items-center font-medium text-teal-600 dark:text-teal-500 hover:underline"
           >
             <svg
@@ -155,7 +156,7 @@ const Home = () => {
                 d="M1 5h12m0 0L9 1m4 4L9 9"
               />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

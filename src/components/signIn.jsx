@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Signinsvg from "./svgs/signin";
 import { signIn } from "../services/userService";
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
   const [credentials, setCredentials] = useState({
@@ -77,12 +78,12 @@ const SignIn = () => {
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Don't have an account?{" "}
-                <a
+                <Link
                   className="font-medium text-teal-600 hover:underline dark:text-teal-500"
-                  href="/signup"
+                  to="/signup"
                 >
                   Sign up here
-                </a>
+                </Link>
               </p>
             </form>
           </div>
