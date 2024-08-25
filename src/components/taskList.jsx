@@ -12,7 +12,7 @@ const TaskList = ({
 }) => {
   return (
     <div className="flex justify-center rounded-lg m-10">
-      <ul className="bg-white rounded-lg w-96 text-gray-900 w-full dark:text-gray-200 dark:bg-gray-900 ">
+      <ul className="bg-white rounded-lg w-96 text-gray-900 w-full dark:text-gray-200 dark:bg-gray-900">
         {tasks.map((task) => (
           <li
             key={task.title}
@@ -20,18 +20,22 @@ const TaskList = ({
           >
             <div className="flex items-center">
               <Checkbox
-                checked={task.done}
+                checked={task.completed}
                 onChange={() => handleChange(task)}
               />
-              <EditText
-                name="textbox3"
-                defaultValue={task.title}
-                editButtonProps={{ style: { marginLeft: "5px", width: 16 } }}
-                showEditButton
-                className={`bg-white dark:bg-gray-900 ${
-                  task.done ? "line-through text-gray-500" : ""
-                }`}
-              />
+              <div className="text-container ml-3">
+                {" "}
+                {/* Added class */}
+                <EditText
+                  name="textbox3"
+                  defaultValue={task.title}
+                  editButtonProps={{ style: { width: 16 } }}
+                  showEditButton
+                  className={`bg-white dark:bg-gray-900 ${
+                    task.completed ? "line-through text-gray-500" : ""
+                  }`}
+                />
+              </div>
             </div>
             <div className="flex items-center">
               <Favorite

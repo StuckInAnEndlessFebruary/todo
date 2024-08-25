@@ -68,7 +68,7 @@ class MyDay extends Component {
   handleChange = (task) => {
     const updatedTasks = this.state.tasks.map((t) => {
       if (t.title === task.title) {
-        return { ...t, done: !t.done };
+        return { ...t, completed: !t.completed };
       }
       return t;
     });
